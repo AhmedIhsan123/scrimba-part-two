@@ -1,0 +1,33 @@
+.main-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	justify-self: center;
+	height: 100%;
+	width: 100%;
+	padding: 2rem;
+}
+
+.ingredients-form {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+}
+
+.ingredients-input {
+	padding: 0.5rem 0.5rem;
+	border: 1px solid gray;
+	width: 300px;
+	border-radius: 5px;
+	text-align: start;
+	max-width: 400px;
+	min-width: 150px;
+}
+
+.add-ingredients {
+	cursor: pointer;
+	padding: 0.65rem 2.25rem;
+	border-radius: 5px;
+	color: white;
+	background-color: black;
+}
