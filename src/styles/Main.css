@@ -7,6 +7,7 @@
 	height: 100%;
 	width: 600px;
 	padding: 2rem;
+	gap: 1rem;
 }
 
 .ingredients-form {
@@ -72,4 +73,21 @@
 	padding: 0.5rem 1rem;
 	color: white;
 	background-color: rgb(250, 171, 115);
+}
+
+.suggested-recipe-container {
+	color: #475467;
+	line-height: 28px;
+	font-size: 1.125rem;
+	font-weight: 400;
+}
+
+.suggested-recipe-container ul li,
+.suggested-recipe-container ol li {
+	margin-bottom: 8px;
+	margin-left: 2rem;
+}
+
+.recommend-text {
+	padding-bottom: 1rem;
 }

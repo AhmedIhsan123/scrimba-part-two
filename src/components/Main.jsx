@@ -2,13 +2,15 @@ import React from "react";
 import "../styles/Main.css";
 import ClaudeRecipe from "./ClaudeRecipe.jsx";
 import IngredientsList from "./IngredientsList.jsx";
+import { getRecipeFromChefClaude } from "../ai.js";
 
 export default function () {
 	const [ingredients, setIngredients] = React.useState([]);
-	const [recipeShown, setRecipeShown] = React.useState(false);
+	const [recipe, setRecipe] = React.useState("");
 
-	function toggleRecipeShown() {
-		setRecipeShown((prevShown) => !prevShown);
+	async function getRecipe() {
+		const recipeMarkdown = await getRecipeFromChefClaude(ingredients);
+		setRecipe(recipeMarkdown);
 	}
 
 	function addIngredient(formData) {
@@ -30,13 +32,10 @@ export default function () {
 					<button className="add-ingredients btn">+ Add ingredients</button>
 				</form>
 				{ingredients.length > 0 && (
-					<IngredientsList
-						ingredients={ingredients}
-						toggleRecipeShown={toggleRecipeShown}
-					/>
+					<IngredientsList ingredients={ingredients} getRecipe={getRecipe} />
 				)}
 
-				{recipeShown && <ClaudeRecipe />}
+				{recipe && <ClaudeRecipe recipe={recipe} />}
 			</main>
 		</>
 	);
