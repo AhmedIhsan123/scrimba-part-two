@@ -1,11 +1,15 @@
-import "../styles/Main.css";
 import React from "react";
+import "../styles/Main.css";
+import ClaudeRecipe from "./ClaudeRecipe.jsx";
+import IngredientsList from "./IngredientsList.jsx";
 
 export default function () {
 	const [ingredients, setIngredients] = React.useState([]);
-	const ingredientsListItems = ingredients.map((ingredient) => (
-		<li key={ingredient}>{ingredient}</li>
-	));
+	const [recipeShown, setRecipeShown] = React.useState(false);
+
+	function toggleRecipeShown() {
+		setRecipeShown((prevShown) => !prevShown);
+	}
 
 	function addIngredient(formData) {
 		const newIngredient = formData.get("ingredient");
@@ -25,7 +29,14 @@ export default function () {
 					/>
 					<button className="add-ingredients btn">+ Add ingredients</button>
 				</form>
-				<ul className="ingredients-list">{ingredientsListItems}</ul>
+				{ingredients.length > 0 && (
+					<IngredientsList
+						ingredients={ingredients}
+						toggleRecipeShown={toggleRecipeShown}
+					/>
+				)}
+
+				{recipeShown && <ClaudeRecipe />}
 			</main>
 		</>
 	);
